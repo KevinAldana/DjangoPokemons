@@ -1,0 +1,21 @@
+<style>
+    table {
+        width: 100%;
+    }
+</style>
+<h1>Tipo de pokemones</h1>
+<table>
+    {% for type in types %}
+        {% if forloop.counter0|divisibleby:3 %}
+            <tr>
+        {% endif %}
+        {% if type.image_url %}
+            <td><a href="/pokemon/{{ type.name }}"><img src="{{ type.image_url }}" alt="{{ type.name }}" width="100" height="100"><br>{{ type.name }}</a></td>
+        {% else %}
+            <td><a href="/pokemon/{{ type.name }}">{{ type.name }}</a></td>
+        {% endif %}
+        {% if forloop.counter|divisibleby:3 %}
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
